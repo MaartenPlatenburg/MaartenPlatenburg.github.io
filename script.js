@@ -1,4 +1,5 @@
 var main = function(){
+   //callApi(city, units);
    /*
    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Eindhoven&units=metric&APPID=95d38c513c13444b6290e62403391b4e", function( data ) {
       $('#weather').html(data.weather[0].main);
@@ -7,7 +8,18 @@ var main = function(){
       $('#city').html(data.name);
    });
    */
-   $(".btn").click(function() {
+   $(".btn").click(function(){
+      readInput();
+   });
+
+   $('#weather_city').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        readInput();
+    }
+});
+/*
+      function() {
       console.log("button clicked " + i);
       i++;
       city = document.getElementById("weather_city");
@@ -25,11 +37,24 @@ var main = function(){
       callApi(city.value, units);
 
    });
-   $("#weather_city").keyup(function(event){
-       if(event.keyCode == 13){
-           readInput();
+
+   $("#weather_city").keydown(function(event){
+      console.log("test enter");
+       if(event.keyCode === 13){
+          console.log("passed first part enter test");
+           //readInput();
        }
    });
+
+   document.getElementById("weather_city").addEventListener("keydown", function(e) {
+    if (!e) { var e = window.event; }
+    e.preventDefault(); // sometimes useful
+
+    // Enter is pressed
+    if (e.keyCode == 13) { readInput(); }
+}, false);
+*/
+
 
    console.log("test end");
    console.log(key);
@@ -37,8 +62,8 @@ var main = function(){
 var i = 1;
 var key = "a2bb80347ddf45905d4c30026a34a752";
 var oWMurl = "http://api.openweathermap.org/data/2.5/weather?q=";
-var city;
-var units;
+var city = "Eindhoven";
+var units = "metric";
 
  // London&appid=2de143494c0b295cca9337e1e96b00e0
 

@@ -1,6 +1,7 @@
 .header {
    text-align: center;
    font-size: 50px;
+   padding: 30px;
 }
 
 .nav {
@@ -9,9 +10,4 @@
 
 #weather {
    font-size: 40px;
-}
-
-.radio-btns {
-   margin-right: auto;
-   margin-left: auto;
 }
