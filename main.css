@@ -10,3 +10,8 @@
 #weather {
    font-size: 40px;
 }
+
+.radio-btns {
+   margin-right: auto;
+   margin-left: auto;
+}

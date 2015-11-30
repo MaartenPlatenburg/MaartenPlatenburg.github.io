@@ -25,6 +25,12 @@ var main = function(){
       callApi(city.value, units);
 
    });
+   $("#weather_city").keyup(function(event){
+       if(event.keyCode == 13){
+           readInput();
+       }
+   });
+
    console.log("test end");
    console.log(key);
 };
@@ -35,6 +41,22 @@ var city;
 var units;
 
  // London&appid=2de143494c0b295cca9337e1e96b00e0
+
+var readInput = function(){
+   city = document.getElementById("weather_city");
+   var units_metric = document.getElementById("units_metric");
+   var units_imperial = document.getElementById("units_imperial");
+   units;
+   console.log("city " + city.value);
+   console.log(units_metric.checked);
+   if(units_metric.checked){
+      units = "metric";
+   } else {
+      units = "imperial"
+   }
+   console.log(units);
+   callApi(city.value, units);
+};
 
 var callApi = function(city, units) {
    var apiUrl = oWMurl + city + "&units=" + units + "&appid=" + key;
