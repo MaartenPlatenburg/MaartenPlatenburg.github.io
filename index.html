@@ -18,31 +18,28 @@
          <li><a href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
       </ul>
 
-      <div class="search-input">
-         <div class="container">
-               <form name="city-search" class="form-inline">
-                  <div class="row">
-                     <div class="col-md-6">
-                        <div class="input-group">
-                           <input type="text" class="form-control" id="weather_city" placeholder="City">
-                           <span class="input-group-btn">
-                              <button type="button" class="btn btn-default">Go</button>
-                           </span>
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="form-group">
-                           <label class="sr-only" for="units">Units</label>
-                           <input type="radio" class="form-control" name="units" id="units_metric" value="metric" checked="checked">
-                           &deg;C
-                           <input type="radio" class="form-control" name="units" id="units_imperial" value="imperial">
-                           &deg;F
-                        </div>
-                     </div>
-                  </div>
-               </form>
+      <form name="city-search" class="form-inline">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="input-group">
+                  <input type="text" class="form-control" name="weather_city" id="weather_city" placeholder="City">
+                  <span class="input-group-btn">
+                     <button type="button" class="btn btn-default">Go</button>
+                  </span>
+               </div>
             </div>
-      </div>
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="sr-only" for="units">Units</label>
+                  <input type="radio" class="form-control" name="units" id="units_metric" value="metric" checked="checked">
+                  &deg;C
+                  <input type="radio" class="form-control" name="units" id="units_imperial" value="imperial">
+                  &deg;F
+               </div>
+            </div>
+         </div>
+      </form>
+
 
       <div class="header">
          <div id="city">Welcome to local weather!</div>
@@ -66,6 +63,6 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="app.js"></script>
+      <script src="script.js"></script>
    </body>
 </html>
