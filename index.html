@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
       <meta charset="utf-8">
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="main.css>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>First try!</title>
-
+      <meta name="viewport" content="width=device-width, initial-scale=1">
    </head>
    <body>
       <ul class="nav nav-tabs">
@@ -18,8 +18,34 @@
          <li><a href="#"><span class="glyphicon glyphicon-plus"></span></a></li>
       </ul>
 
-      <div id="header">
-         <div id="city"><h1>Hello, world!</h1></div>
+      <div class="search-input">
+         <div class="container">
+               <form name="city-search" class="form-inline">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="input-group">
+                           <input type="text" class="form-control" id="weather_city" placeholder="City">
+                           <span class="input-group-btn">
+                              <button type="button" class="btn btn-default">Go</button>
+                           </span>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label class="sr-only" for="units">Units</label>
+                           <input type="radio" class="form-control" name="units" id="units_metric" value="metric" checked="checked">
+                           &deg;C
+                           <input type="radio" class="form-control" name="units" id="units_imperial" value="imperial">
+                           &deg;F
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+      </div>
+
+      <div class="header">
+         <div id="city">Welcome to local weather!</div>
       </div>
 
       <div class="output-boxes">
