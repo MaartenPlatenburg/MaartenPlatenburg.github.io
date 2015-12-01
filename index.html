@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="main.css">
-      <title>First try!</title>
+      <title>Local Weather</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
    </head>
    <body>
@@ -30,7 +30,7 @@
                   </span>
                </div>
             </div>
-            <div class="col-lg-2 col-lg-offset-0">
+            <div class="col-lg-2">
                <div class="form-group radio-btns">
                   <label class="sr-only" for="units">Units</label>
                   <label class="radio-inline" for="units_metric">
@@ -44,20 +44,32 @@
 
 
       <div class="header">
-         <div id="city"><span>Eindhoven</span></div>
+         <div id="city"><span></span></div>
       </div>
 
       <div class="output-boxes">
          <div class="container">
             <div class="row">
-               <div class="col-md-4">
+               <div class="col-md-5 text-center">
                   <div id='weather'>Test</div>
                </div>
-               <div class="col-md-4">
-                  <div id='description'>Test2</div>
-               </div>
-               <div class="col-md-4">
+               <div class="col-md-5 text-center">
                   <div id='temp'>Test3</div>
+               </div>
+               <div class="col-md-4 text-center">
+                  <div id='wind'>Test2</div>
+               </div>
+               <div class="col-md-4 text-center">
+                  <div id='description'></div>
+               </div>
+               <div class="col-md-4 text-center">
+                  <div id='humidity'></div>
+               </div>
+               <div class="col-md-4 text-center">
+                  <div id='pressure'></div>
+               </div>
+               <div class="col-md-4 text-center">
+                  <div id='winddir'></div>
                </div>
             </div>
          </div>

@@ -1,5 +1,5 @@
 var main = function(){
-   //callApi(city, units);
+   callWApi(city, units);
    /*
    $.getJSON( "http://api.openweathermap.org/data/2.5/weather?q=Eindhoven&units=metric&APPID=95d38c513c13444b6290e62403391b4e", function( data ) {
       $('#weather').html(data.weather[0].main);
@@ -11,14 +11,15 @@ var main = function(){
    $(".btn").click(function(){
       readInput();
    });
-
-   $('#weather_city').keypress(function(event){
+/*
+   $('#weather_city').keyup(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if(keycode == '13'){
+      console.log("enter pressed");
         readInput();
-    }
+    };
 });
-/*
+
       function() {
       console.log("button clicked " + i);
       i++;
@@ -34,7 +35,7 @@ var main = function(){
          units = "imperial"
       }
       console.log(units);
-      callApi(city.value, units);
+      callWApi(city.value, units);
 
    });
 
@@ -62,16 +63,17 @@ var main = function(){
 var i = 1;
 var key = "a2bb80347ddf45905d4c30026a34a752";
 var oWMurl = "http://api.openweathermap.org/data/2.5/weather?q=";
+var fUrl = "https://api.flickr.com/services/rest/?";
+var fKey = "825a6d105f983b5a899030875915a66a";
+var fMethod = "flickr.photos.search";
 var city = "Eindhoven";
 var units = "metric";
-
  // London&appid=2de143494c0b295cca9337e1e96b00e0
 
 var readInput = function(){
    city = document.getElementById("weather_city");
    var units_metric = document.getElementById("units_metric");
    var units_imperial = document.getElementById("units_imperial");
-   units;
    console.log("city " + city.value);
    console.log(units_metric.checked);
    if(units_metric.checked){
@@ -80,10 +82,10 @@ var readInput = function(){
       units = "imperial"
    }
    console.log(units);
-   callApi(city.value, units);
+   callWApi(city.value, units);
 };
 
-var callApi = function(city, units) {
+var callWApi = function(city, units) {
    var apiUrl = oWMurl + city + "&units=" + units + "&appid=" + key;
    console.log(apiUrl);
    $.getJSON(apiUrl,
@@ -93,11 +95,22 @@ var callApi = function(city, units) {
       rTemp = data.main.temp + "&deg;" + unit_sign();
       rCity = data.name;
       rCountry = data.sys.country;
+      rLon = data.coord.lon;
+      rLat = data.coord.lat;
+      rWind = data.wind.speed;
+      rWindDirection = data.wind.deg;
+      rPressure = data.main.pressure;
+      rHumidity = data.main.humidity;
 
       $('#weather').html(rWeather);
-      $('#description').html(rDescription);
-      $('#temp').html(rTemp);
+      $('#description').html("Detailed description: " + rDescription);
+      $('#temp').html("Temperature: " + rTemp);
       $('#city').html(rCity + ", " + rCountry);
+      $('#wind').html("Wind speed: " + rWind);
+      $('#humidity').html("Humidity: " + rHumidity + "%");
+      $('#pressure').html("Atmospheric pressure: " + rPressure + "hPa");
+      $('#winddir').html("Wind direction: " + rWindDirection + " degrees");
+      callFlApi();
 
 /*
       $('#weather').html(data.weather[0].main);
@@ -108,12 +121,29 @@ var callApi = function(city, units) {
    });
 };
 
+var callFlApi = function() {
+   var apiFlUrl = //fUrl + "&method=" + fMethod + "&tags=" + rCity + ",skyline" + "&sort=relevance" + "&per_page=1" + "&api_key=" + fKey + "&format=json";
+   console.log(apiFlUrl);
+   $.getJSON(apiFlUrl,
+   function( data ) {
+      console.log("test");
+      fId = jsonFlickrApi.data.photos.photo[0].id;
+      console.log("fId" + fId);
+      fOwner = data.photos.photo[0].owner;
+      console.log(fOwner);
+
+
+
+   });
+   //console.log("https://www.flickr.com/photos/" + fOwner + "/" + fId + "/");
+};
+
 var unit_sign = function() {
    if (units === "metric") {
       return "C"
    } else {
       return "F"
-   }
+   };
 };
 
 $(document).ready(main);
