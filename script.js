@@ -127,7 +127,7 @@ var callFlApi = function() {
    $.getJSON(apiFlUrl,
    function( data ) {
       console.log("test");
-      fId = jsonFlickrApi.data.photos.photo[0].id;
+      fId = data.photos.photo[0].id;
       console.log("fId" + fId);
       fOwner = data.photos.photo[0].owner;
       console.log(fOwner);
