@@ -122,7 +122,7 @@ var callWApi = function(city, units) {
 };
 
 var callFlApi = function() {
-   var apiFlUrl = //fUrl + "&method=" + fMethod + "&tags=" + rCity + ",skyline" + "&sort=relevance" + "&per_page=1" + "&api_key=" + fKey + "&format=json";
+   var apiFlUrl = fUrl + "&method=" + fMethod + "&tags=" + rCity + ",skyline" + "&sort=relevance" + "&per_page=1" + "&api_key=" + fKey + "&format=json";
    console.log(apiFlUrl);
    $.getJSON(apiFlUrl,
    function( data ) {
