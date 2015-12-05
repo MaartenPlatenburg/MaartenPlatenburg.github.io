@@ -56,9 +56,7 @@ var main = function(){
 }, false);
 */
 
-
-   console.log("test end");
-   console.log(key);
+   console.log("test main end");
 };
 var i = 1;
 var key = "a2bb80347ddf45905d4c30026a34a752";
@@ -103,13 +101,13 @@ var callWApi = function(city, units) {
       rHumidity = data.main.humidity;
 
       $('#weather').html(rWeather);
-      $('#description').html("Detailed description: " + rDescription);
-      $('#temp').html("Temperature: " + rTemp);
+      $('#description').html("Detailed description:</br>" + rDescription);
+      $('#temp').html("Temperature:</br>" + rTemp);
       $('#city').html(rCity + ", " + rCountry);
-      $('#wind').html("Wind speed: " + rWind);
-      $('#humidity').html("Humidity: " + rHumidity + "%");
-      $('#pressure').html("Atmospheric pressure: " + rPressure + "hPa");
-      $('#winddir').html("Wind direction: " + rWindDirection + " degrees");
+      $('#wind').html("Wind speed:</br>" + rWind);
+      $('#humidity').html("Humidity:</br>" + rHumidity + "%");
+      $('#pressure').html("Atmospheric pressure:</br>" + rPressure + " hPa");
+      $('#winddir').html("Wind direction:</br>" + rWindDirection + " degrees");
       callFlApi();
 
 /*
@@ -122,20 +120,47 @@ var callWApi = function(city, units) {
 };
 
 var callFlApi = function() {
-   var apiFlUrl = fUrl + "&method=" + fMethod + "&tags=" + rCity + ",skyline" + "&sort=relevance" + "&per_page=1" + "&api_key=" + fKey + "&format=json";
+   var apiFlUrl = fUrl + "&method=" + fMethod + "&tags=" + rCity + ",skyline" + "&extras=original_format,url_o" + "&sort=relevance" + "&per_page=1" + "&api_key=" + fKey + "&nojsoncallback=1" + "&format=json";
    console.log(apiFlUrl);
+
    $.getJSON(apiFlUrl,
-   function( data ) {
+   function( flickrData ) {
+      var fPhoto = flickrData.photos.photo[0];
       console.log("test flickr api data");
-      fId = data.photos.photo[0].id;
+      fId = flickrData.photos.photo[0].id;
+      fOwner = flickrData.photos.photo[0].owner;
+      fSecret = flickrData.photos.photo[0].secret;
+      fFarmId = flickrData.photos.photo[0].farm;
+      fServerId = flickrData.photos.photo[0].server;
       console.log("fId" + fId);
-      fOwner = data.photos.photo[0].owner;
       console.log(fOwner);
+      console.log("https://www.flickr.com/photos/" + fOwner + "/" + fId + "/");
+      var fPhotoUrl = "https://farm" + fFarmId + ".staticflickr.com/" + fServerId + "/" + fId + "_" + fSecret + "_b" + ".jpg";
+      console.log(fPhotoUrl);
+
+      var getSizeUrl = fUrl + "&method=flickr.photos.getSizes" + "&api_key=" + fKey + "&photo_id=" + fId + "&nojsoncallback=1&format=json";
+      console.log(getSizeUrl);
+      $.getJSON(getSizeUrl,
+      function( data ) {
+         console.log(data.sizes.size.length);
+         var fPhotoSizeUrl = data.sizes.size[data.sizes.size.length-1].source;
+         console.log(fPhotoSizeUrl);
+         $(".output").css({
+            "background-image": "url(" + fPhotoSizeUrl + ")",
+            "background-size": "cover",
+            "background-position": "center",
+            "background-repeat": "no-repeat"
+         });
+      });
 
 
+      //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
 
+   })
+   .fail(function() {
+      console.log("Flickr API error");
    });
-   //console.log("https://www.flickr.com/photos/" + fOwner + "/" + fId + "/");
+
 };
 
 var unit_sign = function() {

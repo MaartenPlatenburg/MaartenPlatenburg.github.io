@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="main.css">
       <title>Local Weather</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
    </head>
    <body>
       <!---
@@ -20,9 +20,10 @@
       </ul>
       --->
 
-      <form name="city-search" class="form-inline ">
+<div class="container">
+      <form name="city-search" class="form-inline input">
          <div class="row ">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                <div class="input-group searchbox">
                   <input type="text" class="form-control" name="weather_city" id="weather_city" placeholder="City">
                   <span class="input-group-btn">
@@ -30,7 +31,7 @@
                   </span>
                </div>
             </div>
-            <div class="col-lg-2">
+            <div class="col-md-2">
                <div class="form-group radio-btns">
                   <label class="sr-only" for="units">Units</label>
                   <label class="radio-inline" for="units_metric">
@@ -41,19 +42,19 @@
             </div>
          </div>
       </form>
+</div>
 
-
-      <div class="header">
-         <div id="city"><span></span></div>
+      <div class="page-header">
+         <div id="city"></div>
       </div>
 
       <div class="output-boxes">
-         <div class="container">
+         <div class="container output">
             <div class="row">
-               <div class="col-md-5 text-center">
+               <div class="col-md-6 text-center">
                   <div id='weather'>Test</div>
                </div>
-               <div class="col-md-5 text-center">
+               <div class="col-md-6 text-center">
                   <div id='temp'>Test3</div>
                </div>
                <div class="col-md-4 text-center">
