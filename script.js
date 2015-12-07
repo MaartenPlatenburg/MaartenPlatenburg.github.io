@@ -11,6 +11,7 @@ var main = function(){
    $(".btn").click(function(){
       readInput();
    });
+   
 /*
    $('#weather_city').keyup(function(event){
     var keycode = (event.keyCode ? event.keyCode : event.which);
