@@ -145,7 +145,7 @@ var callFlApi = function() {
          console.log(data.sizes.size.length);
          var fPhotoSizeUrl = data.sizes.size[data.sizes.size.length-1].source;
          console.log(fPhotoSizeUrl);
-         $(".output").css({
+         $("body").css({
             "background-image": "url(" + fPhotoSizeUrl + ")",
             "background-size": "cover",
             "background-position": "center",
